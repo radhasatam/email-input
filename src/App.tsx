@@ -12,7 +12,7 @@ const EMAIL_LIST = [
 
 function App() {
   return (
-    <main className="app">
+    <main id="app">
       <div className="app-container">
         <Autocomplete
           id="email-input"
