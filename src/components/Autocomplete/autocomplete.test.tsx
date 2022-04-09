@@ -38,13 +38,13 @@ test("shows no-options found message if user input does not match any of the opt
   expect(noOptionsElement).toBeInTheDocument()
 })
 
-test("selects option on click", () => {})
-
-test("selects mutliple options on click", () => {})
-
 test("navigates between options with the up / down arrows", () => {})
 
 test("selects option on tab and enter", () => {})
+
+test("selects option on click", () => {})
+
+test("selects mutliple options on click", () => {})
 
 test("provides an option to remove input on mouse over", () => {})
 

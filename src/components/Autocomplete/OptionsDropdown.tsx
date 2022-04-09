@@ -1,18 +1,22 @@
+import clsx from "clsx"
+
 interface OptionsDropdownProps {
+  activeOption: number
   options: string[]
 }
 
 const OptionsDropdown = (props: OptionsDropdownProps) => {
-  const { options } = props
+  const { activeOption, options } = props
 
   return options.length ? (
     <ul className="autocomplete__list" aria-label="Autocomplete Options">
       {options.map((o, index) => {
-        let className
-
         return (
           <li
-            className={className}
+            className={clsx(
+              index === activeOption ? "autocomplete__option--active" : "",
+              "autocomplete__option"
+            )}
             key={o}
             onClick={() => {
               // TODO: Implement selection
