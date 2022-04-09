@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react"
+import userEvent from '@testing-library/user-event';
 import Autocomplete from "./Autocomplete"
 
 test("renders the autocomplete input", () => {
@@ -13,7 +14,20 @@ test("renders the autocomplete input", () => {
   expect(element).toBeInTheDocument()
 })
 
-test("renders autocomplete options dropdown", () => {
+test("renders autocomplete options dropdown on enter", async () => {
+  render(
+    <Autocomplete
+      options={["test@gmail.com", "test1@gmail.com"]}
+      id="autocomplete-field"
+      placeholder="Enter Value"
+    />
+  )
+  const element = screen.getByLabelText(/enter value/i)
+  expect(element).toBeInTheDocument()
+  await userEvent.type(element, "test");
+  expect((element as HTMLInputElement).value).toBe("test")
+  const optionsList = screen.getByRole("list", {name: /autocomplete options/i})
+  expect(optionsList).toBeInTheDocument()
 })
 
 test("selects option on click", () => {

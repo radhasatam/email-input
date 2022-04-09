@@ -6,6 +6,13 @@ const EMAIL_LIST = [
   "test@gmail.com",
   "test2@gmail.com",
   "test3@gmail.com",
+  "test4@gmail.com",
+  "test5@gmail.com",
+  "test6@gmail.com",
+  "test7@gmail.com",
+  "test8@gmail.com",
+  "test9@gmail.com",
+  "test10@gmail.com",
   "123@yahoo.com",
   "abc@g.com",
 ]

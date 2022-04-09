@@ -1,18 +1,40 @@
 @import "../../styles/_color.scss";
 
-input.autocomplete {
-  min-width: 400px;
-  padding: 16px;
-  border: none;
-  border-radius: 8px;
-  background: $input-background;
-  filter: drop-shadow(0px 16px 34px rgba(48, 53, 57, 0.05));
+.autocomplete {
+  position: relative;
 
-  &:focus {
-    outline: none;
+  &__input {
+    min-width: 400px;
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    background: $input-background;
+    filter: drop-shadow(0px 16px 34px rgba(48, 53, 57, 0.05));
+  
+    &:focus {
+      outline: none;
+    }
+  
+    &::placeholder {
+      color: #BDBDBD;
+    }
   }
-
-  &::placeholder {
-    color: #BDBDBD;
+  
+  &__list {
+    height: 260px;
+    min-width: 75%;
+    padding-left: 0;
+    position: absolute;
+    left: 0;
+    top: -10;
+    box-shadow: 0px 4px 14px rgba(26, 24, 24, 0.08);
+    border-radius: 4px;
+    background: $input-background;
+    list-style: none;
+    margin: 0;
+    overflow-y: scroll;
+    li {
+      padding: 18px;
+    }
   }
 }
