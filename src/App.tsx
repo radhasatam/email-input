@@ -1,7 +1,13 @@
+import {Autocomplete} from "./components";
+import "./styles/global.scss";
+
 function App() {
   return (
-    <div className="app">
-    </div>
+    <main className="app">
+      <div className="app-container">
+        Aspire
+      </div>
+    </main>
   );
 }
 
