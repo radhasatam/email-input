@@ -1,6 +1,27 @@
-# Getting Started with Create React App
+# Aspire Take-Home Project
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Links
+
+- [Figma Edit View](https://www.figma.com/file/LJBeNSCU6G8NE2cVKowG6B/Engineer-candidate-projects?node-id=0%3A1)
+- [Figma Prototype View](https://www.figma.com/proto/LJBeNSCU6G8NE2cVKowG6B/Engineer-candidate-projects?node-id=4%3A406&viewport=-35%2C554%2C0.18268907070159912&scaling=scale-down-width)
+- [Generated Email List](https://docs.google.com/spreadsheets/d/1BqV34zGQUMaEZkTEEFJZet8VTffFM_zXY2alxFY07xM/edit)
+
+## Core Requirement
+
+Create a production-ready email address input field component without using third-party component libraries.
+The custom input component should have the following features-
+
+- **autocomplete** - dropdown should show the list of valid email addresses from a mock API call
+- **multi-select** - enable user to input multiple-email addresses by typing the email address and hitting enter / tab button to select
+- **modifiable** - allow the user to delete a previously entered email address
+- **validation** - display an error indicator if the user enters an invalid email address
+- It should implemented with hooks preferably
+
+## Further Enhancements
+
+## UI / UX Design Suggestions
 
 ## Available Scripts
 
