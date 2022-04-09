@@ -36,24 +36,22 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
   // }
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log("keydown")
-    // setShowOptions(false)
-    // setFilteredOptions([])
-
     const onPressUpArrow = e.keyCode === 38
     const onPressDownArrow = e.keyCode === 40
 
-    // TODO: Figure out scrolling issue
-    if (onPressUpArrow) {
-      if (activeOption === 0) {
-        return
+    if (filteredOptions.length) {
+      // TODO: Figure out scrolling issue
+      if (onPressUpArrow) {
+        if (activeOption === 0) {
+          return
+        }
+        setActiveOption((currentOption) => currentOption - 1)
+      } else if (onPressDownArrow) {
+        if (activeOption + 1 === filteredOptions.length) {
+          return
+        }
+        setActiveOption((currentOption) => currentOption + 1)
       }
-      setActiveOption((currentOption) => currentOption - 1)
-    } else if (onPressDownArrow) {
-      if (activeOption - 1 === options.length) {
-        return
-      }
-      setActiveOption((currentOption) => currentOption + 1)
     }
   }
 
@@ -73,6 +71,7 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
         <OptionsDropdown
           activeOption={activeOption}
           options={filteredOptions}
+          setActiveOption={setActiveOption}
         />
       )}
     </div>
