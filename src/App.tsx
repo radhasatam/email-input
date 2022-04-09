@@ -1,14 +1,27 @@
-import {Autocomplete} from "./components";
-import "./styles/global.scss";
+import { Autocomplete } from "./components"
+import "./styles/global.scss"
+
+// TODO: Replace with spreadsheet values in a mocked API call
+const EMAIL_LIST = [
+  "test@gmail.com",
+  "test2@gmail.com",
+  "test3@gmail.com",
+  "123@yahoo.com",
+  "abc@g.com",
+]
 
 function App() {
   return (
     <main className="app">
       <div className="app-container">
-        Aspire
+        <Autocomplete
+          id="email-input"
+          placeholder="Enter recipients..."
+          options={EMAIL_LIST}
+        />
       </div>
     </main>
-  );
+  )
 }
 
-export default App;
+export default App
