@@ -21,7 +21,8 @@
   }
   
   &__list {
-    height: 260px;
+    height: auto;
+    max-height: 260px;
     min-width: 75%;
     padding-left: 0;
     position: absolute;
@@ -36,5 +37,11 @@
     li {
       padding: 18px;
     }
+  }
+
+  &__empty {
+    position: absolute;
+    bottom: -32px;
+    left: 12px;
   }
 }

@@ -24,8 +24,8 @@ const OptionsDropdown = (props: OptionsDropdownProps) => {
       })}
     </ul>
   ) : (
-    <div className="no-options">
-      <em>Mo options found</em>
+    <div className="autocomplete__empty" aria-label="No options found">
+      <em>No options found</em>
     </div>
   )
 }

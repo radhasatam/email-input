@@ -13,10 +13,16 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
 
   const [input, setInput] = useState("")
   const [showOptions, setShowOptions] = useState(false)
+  const [filteredOptions, setFilteredOptions] = useState<string[]>([])
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("changed")
-    setInput(e.target.value)
+    const inputValue = e.target.value
+    const filteredOptions = options.filter(
+      (o) => o.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
+    )
+
+    setInput(inputValue)
+    setFilteredOptions(filteredOptions)
     setShowOptions(true)
   }
 
@@ -26,8 +32,9 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
   // }
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log("key-down")
-    setShowOptions(true)
+    console.log('keydown')
+    setShowOptions(false)
+    setFilteredOptions([])
   }
 
   return (
@@ -42,7 +49,7 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
         type="text"
         value={input}
       />
-      {showOptions && input && <OptionsDropdown options={options} />}
+      {showOptions && input && <OptionsDropdown options={filteredOptions} />}
     </div>
   )
 }
