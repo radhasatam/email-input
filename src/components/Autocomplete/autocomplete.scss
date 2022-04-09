@@ -1,0 +1,18 @@
+@import "../../styles/_color.scss";
+
+input.autocomplete {
+  min-width: 400px;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  background: $input-background;
+  filter: drop-shadow(0px 16px 34px rgba(48, 53, 57, 0.05));
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #BDBDBD;
+  }
+}

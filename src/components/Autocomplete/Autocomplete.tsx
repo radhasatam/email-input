@@ -27,6 +27,7 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
 
   return (
     <input
+      aria-label={placeholder}
       className="autocomplete"
       id={id}
       placeholder={placeholder}
