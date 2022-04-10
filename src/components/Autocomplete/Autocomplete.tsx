@@ -50,10 +50,26 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const onPressUpArrow = e.keyCode === 38
     const onPressDownArrow = e.keyCode === 40
+    const onPressEnter = e.keyCode === 13
+    const onPressTab = e.keyCode === 9
+
+    if (input) {
+      if (onPressEnter || onPressTab) {
+        if (filteredOptions.length) {
+          setSelected([...selected, filteredOptions[activeOption]])
+        } else {
+          setSelected([...selected, input])
+        }
+        setShowOptions(false)
+        setInput("")
+      }
+    }
+
+    // TODO: Implement backspace / delete to remove an item
 
     if (filteredOptions.length) {
-      // FIXME: Figure out scrolling issue
       if (onPressUpArrow) {
+        // FIXME: Figure out scrolling issue
         if (activeOption === 0) {
           return
         }
@@ -70,7 +86,11 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
   return (
     <div className="autocomplete">
       <div className="autocomplete__input">
-        <SelectedTagList tags={selected} setTags={setSelected} />
+        <SelectedTagList
+          allOptions={options}
+          tags={selected}
+          setTags={setSelected}
+        />
         <input
           aria-label={placeholder}
           id={id}
