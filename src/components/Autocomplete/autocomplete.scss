@@ -1,28 +1,33 @@
 @import "../../styles/_color.scss";
-$placeholder-text: #BDBDBD;
-$active-option: #EFF5F9;
 
 .autocomplete {
   position: relative;
 
   &__input {
-    min-width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
     padding: 16px;
     border: none;
     border-radius: 8px;
     background: $input-background;
     filter: drop-shadow(0px 16px 34px rgba(48, 53, 57, 0.05));
-  
-    &:focus {
-      outline: none;
-    }
-  
-    &::placeholder {
-      color: $placeholder-text;
+
+    input {
+      display: inline;
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
+    
+      &::placeholder {
+        color: $placeholder-text;
+      }
     }
   }
   
-  &__list {
+  &__dropdown {
     height: auto;
     max-height: 260px;
     min-width: 75%;
@@ -49,5 +54,28 @@ $active-option: #EFF5F9;
     position: absolute;
     bottom: -32px;
     left: 12px;
+  }
+
+  &__tags {
+    font-weight: bold;
+    padding: 8px;
+    margin-right: 6px;
+    &--styled {
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      svg {
+        margin-left: 4px;
+      }
+    }
+    &--active {
+      background-color: $active-tag;
+      svg {
+        cursor: pointer;
+      }
+    }
+    &--error {
+      background-color: $error;
+    }
   }
 }

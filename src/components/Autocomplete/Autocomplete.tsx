@@ -1,5 +1,6 @@
 import { useState } from "react"
 import OptionsDropdown from "./OptionsDropdown"
+import OptionsList from "./OptionsList"
 import "./autocomplete.scss"
 
 interface AutocompleteProps {
@@ -12,10 +13,13 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
   const { id, placeholder = "Enter a value", options } = props
 
   const [input, setInput] = useState("")
+  const [value, setValue] = useState<string[]>([])
   const [showOptions, setShowOptions] = useState(false)
 
+  // filtered options array
   const [filteredOptions, setFilteredOptions] = useState<string[]>([])
-  const [activeOption, setActiveOption] = useState(0) // index of active option
+  // index of active option in the filtered option list
+  const [activeOption, setActiveOption] = useState(0)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value
@@ -34,6 +38,10 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
   //   console.log("selected")
   //   setShowOptions(true)
   // }
+  const onSelectOption = (option: string) => {
+    console.log("[...value, option]", [...value, option])
+    setValue([...value, option])
+  }
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const onPressUpArrow = e.keyCode === 38
@@ -55,21 +63,26 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
     }
   }
 
+  console.log("value", value[0])
   return (
     <div className="autocomplete">
-      <input
-        aria-label={placeholder}
-        className="autocomplete__input"
-        id={id}
-        placeholder={placeholder}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        type="text"
-        value={input}
-      />
+      <div className="autocomplete__input">
+        <OptionsList />
+        <input
+          aria-label={placeholder}
+          id={id}
+          placeholder={placeholder}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          type="text"
+          value={value[0]}
+        />
+      </div>
+
       {showOptions && input && (
         <OptionsDropdown
           activeOption={activeOption}
+          onSelect={onSelectOption}
           options={filteredOptions}
           setActiveOption={setActiveOption}
         />

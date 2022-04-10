@@ -3,14 +3,15 @@ import clsx from "clsx"
 interface OptionsDropdownProps {
   activeOption: number
   options: string[],
+  onSelect: (arg0: string) => void
   setActiveOption: (arg0: number) => void
 }
 
 const OptionsDropdown = (props: OptionsDropdownProps) => {
-  const { activeOption, options, setActiveOption } = props
+  const { activeOption, onSelect, options, setActiveOption, } = props
 
   return options.length ? (
-    <ul className="autocomplete__list" aria-label="Autocomplete Options">
+    <ul className="autocomplete__dropdown" aria-label="Autocomplete Options">
       {options.map((o, index) => {
         return (
           <li
@@ -21,7 +22,7 @@ const OptionsDropdown = (props: OptionsDropdownProps) => {
             key={o}
             onMouseEnter={() => setActiveOption(index)}
             onClick={() => {
-              // TODO: Implement selection
+              onSelect(o);
             }}
           >
             {o}
