@@ -49,7 +49,7 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     // Remove item on backspace if there are any items
-    if (e.key === "Backspace") {
+    if (e.key === "Backspace" && !input) {
       if (selected.length) {
         // Remove item non-mutating
         const newSelected = [...selected]
