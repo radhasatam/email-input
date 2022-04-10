@@ -7,6 +7,8 @@ const DefaultComponent = () => (
     options={["test@gmail.com", "test1@gmail.com"]}
     id="autocomplete-field"
     placeholder="Enter Value"
+    selected={[""]}
+    setSelected={() => {}}
   />
 )
 

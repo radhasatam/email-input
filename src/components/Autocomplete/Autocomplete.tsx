@@ -1,19 +1,26 @@
 import { useState } from "react"
 import OptionsDropdown from "./OptionsDropdown"
-import OptionsList from "./OptionsList"
+import SelectedTagList from "./SelectedTagList"
 import "./autocomplete.scss"
 
 interface AutocompleteProps {
   options: string[]
   id: string
   placeholder?: string
+  selected: string[]
+  setSelected: (arg0: string[]) => void
 }
 
 const AutoComplete = (props: AutocompleteProps): JSX.Element => {
-  const { id, placeholder = "Enter a value", options } = props
+  const {
+    id,
+    placeholder = "Enter a value",
+    options,
+    selected,
+    setSelected,
+  } = props
 
   const [input, setInput] = useState("")
-  const [value, setValue] = useState<string[]>([])
   const [showOptions, setShowOptions] = useState(false)
 
   // filtered options array
@@ -34,13 +41,9 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
     setActiveOption(0)
   }
 
-  // const onClick = (e: React.MouseEvent<HTMLElement>) => {
-  //   console.log("selected")
-  //   setShowOptions(true)
-  // }
   const onSelectOption = (option: string) => {
-    console.log("[...value, option]", [...value, option])
-    setValue([...value, option])
+    setSelected([...selected, option])
+    setShowOptions(false)
   }
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -48,7 +51,7 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
     const onPressDownArrow = e.keyCode === 40
 
     if (filteredOptions.length) {
-      // TODO: Figure out scrolling issue
+      // FIXME: Figure out scrolling issue
       if (onPressUpArrow) {
         if (activeOption === 0) {
           return
@@ -63,11 +66,10 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
     }
   }
 
-  console.log("value", value[0])
   return (
     <div className="autocomplete">
       <div className="autocomplete__input">
-        <OptionsList />
+        <SelectedTagList tags={selected} setTags={setSelected} />
         <input
           aria-label={placeholder}
           id={id}
@@ -75,7 +77,7 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
           onChange={onChange}
           onKeyDown={onKeyDown}
           type="text"
-          value={value[0]}
+          value={input}
         />
       </div>
 
