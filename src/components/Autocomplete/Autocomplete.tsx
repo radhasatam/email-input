@@ -48,16 +48,8 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
   }
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const key = {
-      UP: e.keyCode === 38,
-      DOWN: e.keyCode === 40,
-      ENTER: e.keyCode === 13,
-      TAB: e.keyCode === 9,
-      BACKSPACE: e.keyCode === 8,
-    }
-
     // Remove item on backspace if there are any items
-    if (key.BACKSPACE) {
+    if (e.key === "Backspace") {
       if (selected.length) {
         // Remove item non-mutating
         const newSelected = [...selected]
@@ -68,7 +60,7 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
 
     // Add new tag value on tab / enter
     if (input) {
-      if (key.ENTER || key.TAB) {
+      if (e.key === "Enter" || e.key === "Tab") {
         if (filteredOptions.length) {
           setSelected([...selected, filteredOptions[activeOption]])
         } else {
@@ -79,16 +71,14 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
       }
     }
 
-    // TODO: Implement backspace / delete to remove an item
-
     if (filteredOptions.length) {
-      if (key.UP) {
+      if (e.key === "ArrowUp") {
         // FIXME: Figure out scrolling issue
         if (activeOption === 0) {
           return
         }
         setActiveOption((currentOption) => currentOption - 1)
-      } else if (key.DOWN) {
+      } else if (e.key === "ArrowDown") {
         if (activeOption + 1 === filteredOptions.length) {
           return
         }
