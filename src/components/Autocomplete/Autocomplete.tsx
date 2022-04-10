@@ -44,6 +44,7 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
   const onSelectOption = (option: string) => {
     setSelected([...selected, option])
     setShowOptions(false)
+    setInput("")
   }
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
