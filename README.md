@@ -19,6 +19,7 @@ The custom input component should have the following features-
 - Missing tests cases
 - The dropdown list does not scroll down on navigating with the up / down arrow
 - Responsiveness Issues
+- Fix react 18 warning for ReactDOM.render
 
 ## Further Enhancements
 
