@@ -16,7 +16,7 @@
     input {
       display: inline;
       border: none;
-      min-height: 32px;
+      min-height: 34px;
       padding-left: 8px;
 
       &:focus {
@@ -62,6 +62,7 @@
     font-weight: bold;
     padding: 8px;
     margin-right: 16px;
+    margin-bottom: 4px;
     &--styled {
       border-radius: 6px;
       margin-right: 0;

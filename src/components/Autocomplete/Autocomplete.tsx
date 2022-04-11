@@ -32,8 +32,9 @@ const AutoComplete = (props: AutocompleteProps): JSX.Element => {
     const inputValue = e.target.value
     setInput(inputValue)
 
+    // Filter based on user input and remove already selected tags
     const filteredOptions = options.filter(
-      (o) => o.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
+      (o) => o.toLowerCase().indexOf(inputValue.toLowerCase()) > -1 && !selected.includes(o)
     )
     setFilteredOptions(filteredOptions)
 
